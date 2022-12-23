@@ -72,17 +72,23 @@ class Triangle:
         """
         xs_verticies, ys_verticies = self.base_triangle()
         xs_verticies.append(self.offset), ys_verticies.append(self.offset)
-        fig, ax = plt.subplots()
-        pnt, = ax.plot(xs_verticies, ys_verticies, 'k-') # plot outer triangle
+        plt.ion()
+        fig = plt.figure()
+        plt.plot(xs_verticies, ys_verticies, 'k-') # plot outer triangle
         cur_pos = self.random_pnt_within_triangle()
-        pnt.set_ydata(*cur_pos)
-        fig.canvas.draw()
-        plt.show()
+        plt.plot(*cur_pos, c="C0", marker="o", markersize=5, alpha=.5)
+        fig.canvas.flush_events()
         cur_vert = self.choose_vertex()
         for n in range(N):
             new_pos = self.new_position(cur_vert, cur_pos)
-            pnt.set_ydata(*new_pos)
-            fig.canvas.draw()
+            plt.plot(*new_pos, c="C0", marker="o", markersize=5, alpha=.5)
+            fig.canvas.flush_events()
             time.sleep(0.01)
             cur_pos = new_pos
             cur_vert = self.choose_vertex() # choose new vertex point
+        plt.ioff()
+        plt.show()
+
+if __name__=="__main__":
+    t = Triangle()
+    t.run()
