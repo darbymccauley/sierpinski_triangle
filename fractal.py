@@ -76,6 +76,7 @@ class Triangle:
         fig = plt.figure()
         plt.plot(xs_verticies, ys_verticies, 'k-', zorder=10) # plot outer triangle
         cur_pos = self.random_pnt_within_triangle()
+        plt.tick_params(left=False, right=False, bottom=False, labelleft=False, labelbottom=False)
         plt.plot(*cur_pos, c="C0", marker="o", markersize=5, zorder=2)
         fig.canvas.draw_idle()
         fig.canvas.flush_events()
