@@ -66,7 +66,7 @@ class Triangle:
         return new_pos
 
 
-    def run(self, N=500):
+    def run(self, N=10000):
         """
         Run the fractal
         """
@@ -77,17 +77,20 @@ class Triangle:
         plt.plot(xs_verticies, ys_verticies, 'k-') # plot outer triangle
         cur_pos = self.random_pnt_within_triangle()
         plt.plot(*cur_pos, c="C0", marker="o", markersize=5, alpha=.5)
+        fig.canvas.draw_idle()
         fig.canvas.flush_events()
         cur_vert = self.choose_vertex()
         for n in range(N):
             new_pos = self.new_position(cur_vert, cur_pos)
             plt.plot(*new_pos, c="C0", marker="o", markersize=5, alpha=.5)
+            fig.canvas.draw_idle()
             fig.canvas.flush_events()
             time.sleep(0.01)
             cur_pos = new_pos
             cur_vert = self.choose_vertex() # choose new vertex point
         plt.ioff()
         plt.show()
+
 
 if __name__=="__main__":
     t = Triangle()
