@@ -68,21 +68,21 @@ class Triangle:
 
     def run(self, N=10000):
         """
-        Run the fractal
+        Run the fractal.
         """
         xs_verticies, ys_verticies = self.base_triangle()
         xs_verticies.append(self.offset), ys_verticies.append(self.offset)
         plt.ion()
         fig = plt.figure()
-        plt.plot(xs_verticies, ys_verticies, 'k-') # plot outer triangle
+        plt.plot(xs_verticies, ys_verticies, 'k-', zorder=10) # plot outer triangle
         cur_pos = self.random_pnt_within_triangle()
-        plt.plot(*cur_pos, c="C0", marker="o", markersize=5, alpha=.5)
+        plt.plot(*cur_pos, c="C0", marker="o", markersize=5, zorder=2)
         fig.canvas.draw_idle()
         fig.canvas.flush_events()
         cur_vert = self.choose_vertex()
         for n in range(N):
             new_pos = self.new_position(cur_vert, cur_pos)
-            plt.plot(*new_pos, c="C0", marker="o", markersize=5, alpha=.5)
+            plt.plot(*new_pos, c="C0", marker="o", markersize=5, zorder=2)
             fig.canvas.draw_idle()
             fig.canvas.flush_events()
             time.sleep(0.01)
