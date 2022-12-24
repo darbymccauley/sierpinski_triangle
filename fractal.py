@@ -66,7 +66,7 @@ class Triangle:
         return new_pos
 
 
-    def run(self, N=10000):
+    def run(self, N=1000):
         """
         Run the fractal.
         """
