@@ -16,10 +16,10 @@ $ pip install -r requirements.txt
 ```
 Run:
 ``` 
-$ python3 fractal.py
+$ python3 fractal.py [nsamples]
 ```
 
-The default number of samples used to generate the image when run is 1000. However, this can be changed as desired:
+The default number of samples used to generate the image when run is 1000. However, this can be changed as desired with the optional `nsamples` flag in the command line or in an interactive session:
 ```
 import fractal
 t = fractal.Triangle()
